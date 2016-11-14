@@ -1,0 +1,150 @@
+\section{Réalisation}
+\label{sec:impl}
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=3.5cm, height=2cm]{images/programmer.png}
+%\caption{Un programmeur occupé}
+%\label{fig:modele}
+%\end{figure}
+
+\subsection{Realisation Globale}
+\paragraph{} Le fonctionnement de la simulation est géré par différentes classes contenues dans des packages ayant une fonction bien définie.
+\begin{itemize}
+	\item Le package « mouse » contient les classes de données caractérisant les souris, leur mémoire et leur mode de communication. Il contient également les classe des souris spéciales dérivant de la classe "Mouse".
+	\item Le package « griddata » est également composé de classes données. Celles-ci caractérisent la grille, les différents types de case et les paramètres de la grille qui sont stockés indépendamment. Il contient les classes "PraticableSquare" et "ObstacleSquare" dérivant toutes deux de "Square" et composant la classe "Grid".
+	\item Le package « engine » constitue le moteur de la simulation. Il contient les classes de traitement permettant de générer la grille, de lancer la simulation, et de stocker les statistiques relatives à la simulation.
+	\item Le package « gui » constitue quant à lui le moteur graphique de la simulation. Il gère l'affichage des différents composants de la fenêtre de simulation. Il se charge aussi de faire avancer la simulation dans le temps.
+	\item Le package « utilities » contient différentes classes pouvant s'avérer utiles à divers endroits du code.
+\end{itemize}
+
+\fig{images/UML.png}{10cm}{8cm}{UML prévu au commencement du Projet}{uml}
+
+\subsection{Conception Détaillée}
+	\subsubsection{Les souris}
+	\paragraph{} Une souris possède plusieurs caractéristiques :
+	\begin{itemize}
+		\item {Age :} L'âge d'une souris représente le nombre de tours qu'elle a vécu depuis sa naissance. Ce nombre s'incrémente donc à chaque tour. Une souris meure de vieillesse au bout de 200 tours.
+		\item {Vision :} Une souris peut voir autour d'elle sur un rayon déterminé aléatoirement lors de sa naissance. Celui-ci varie de 1 à 4.
+		\item{Mémoire :} La mémoire de la souris est représentée par une grille contenant les cases que la souris a mémorisé. Cette mémoire est limitée à 100 cases. Si la limite est dépassée, les cases mémorisées le plus anciennement sont oubliées.
+		Une souris peut également garder en mémoire les souris qui lui ont menti. Une souris à une chance sur deux de mémoriser une souris menteuse après s'être faite berner par celle-ci.
+		\item{Communication :} 
+			\begin{itemize}
+				\item Une souris peut communiquer avec d'autres souris sur la même case ou sur une case adjacente. La communication permet aux souris de s'échanger des informations concernant la position des sources de nourriture sur la grille. Elle se fait donc en fonction de la mémoire de la souris qui va donner une information.
+				\item Une souris donnant une information à une autre peut décider de lui mentir, lui donner une information érronée. Dans ce cas, la souris va chercher dans sa mémoire une case dont elle sait qu'elle ne contient pas de fromage, afin d'en indiquer la position à une autre souris. Une souris a plus de chance de mentir si sa fiabilité est faible. Ce paramètre varie de 0 à 5.
+				\item Une souris qui reçoit une information peut décider de l'accepter ou de la refuser. Ce choix se fait en fonction de la confiance de la souris. Ce paramètre varie de 0 à 5. Plus la confiance est élevée, plus la souris sera naïve, et inversement.
+				\item Une souris a 1 chance sur 5 d'être muette, c'est-à-dire qu'elle ne peut pas donner d'informations à d'autres souris. Dans le même sens, une souris à 1 chance sur 5 d'être sourde, elle ne pourra donc pas écouter les informations données par les autres souris.
+			\end{itemize}
+			\item Pendant un tour, une souris peut : 
+				\begin{itemize}
+					\item Se dupliquer.
+					\item Se reproduire avec une autre souris de sexe opposé.
+					\item Se nourrir.
+					\item Choisir une cible vers laquelle se déplacer.
+					\item Se déplace vers sa cible.
+					\item Se déplacer aléatoirement.
+					\item Explorer la grille.
+					\item Accoucher.
+					\item Mourir.
+				\end{itemize}
+			\end{itemize}
+\subsubsection{La simulation}
+	
+	Déroulement de la simulation
+	
+	\begin{itemize}
+		\item Au commencement, la simulation est instanciée et la génération est lancée. La boucle de simulation se lance alors. 
+			Le compteur de tours est incrémenté.
+		\item Les souris agissent une par une et ont un comportement différent selon leur environnement et leurs besoins. Leurs actions font appel à des données plus ou moins globales et modifient les données de la souris ainsi que de la grille. (Voir figure ALGORITHME)
+		\item Les souris venant de mourir ce tour sont supprimées de la grille puis les souris venant de naître sont ajoutées à la grille.	
+		\item On décrémente le compteur de régénération de la nourriture. Si le compteur vaut zéro, 5 unités de nourriture sont ajoutées sur une case praticable de la grille. Le compteur revient alors à sa valeur initiale définie dans l'onglet "Sim" de la simulation.
+		\item On boucle afin de revenir à l'incrémentation du nombre de tours.
+
+	\end{itemize}
+	
+	
+\subsubsection{La grille et sa génération}
+
+ \paragraph{}Une grille est composée de X*Y cases, la taille minimum étant de 5*5, et la taille de maximum de 50*50.
+Les tailles rectangulaires sont autorisées.\\
+Une case peut soit être vide, soit posséder une source de nourriture, soit être un obstacle (Non praticable).//
+Une source de nourriture est simplement composée d'une quantité de nourriture.
+
+\paragraph{} Une grille est générée aléatoirement,  en fonction de plusieurs paramètres :
+	\begin{itemize}
+		\item[*] La taille initiale de la grille
+		\item[*] La densité des obstacles ( \% d'obstacle sur la grille)
+		\item[*] La densité des sources de nourritures
+		\item[*] Le nombre de souris de départ
+	\end{itemize}
+\paragraph{} On peut également activer ou désactiver les souris spéciales lors de la génération.
+Tous ses paramètres sont stockés dans une classe "GridParameters", ceci permettant de centraliser les informations, et de facilement pouvoir en rajouter si nécessaire.
+
+\paragraph{} C'est la classe factory "Génération" qui va s'occuper de créer la grille.
+
+La génération se déroule en plusieurs étapes :
+\begin{enumerate}
+	\item On créer d'abord le tableau (la grille) de la taille voulue.
+	\item On génère ensuite aléatoirement les obstacles, de manière structurée.
+	\item C'est à dire que l'on ne va pas juste placer aléatoirement les obstacles, mais bien créer une zone particulière, où chaque case est atteignable depuis n'importe quelle autre case. 
+	
+Ainsi, si on génère des obstacles sur une densité de 95\%, les 5\% restant formeront un simple chemin sur lequel les souris pourront se déplacer.
+
+Pour cela, on va sélectionner une case aléatoirement, et vérifier si les 4 cases autour sont peuvent être liée (On utilise le calcul du chemin le plus court)
+\end{enumerate}
+
+\subsubsection{Calcul du chemin le plus court}
+\label{sec:calculchemin}
+
+\paragraph{} Les souris auront souvent besoin de déterminer leur chemin pour se déplacer vers leurs cibles. Nous avons donc pour cela écrit un algorithme du chemin le plus court, pour rapidement trouver le chemin le plus optimisé pour relier deux points.
+L'algorithme que nous avons utilisé est une adaptation de l'algorithme A* à notre projet.
+
+\paragraph{} Le raisonnement consiste à marquer au fur et à mesure les cases en notant leur distance avec la case de départ, en formant tous les chemins possibles entre une case et la case de départ, et en conservant uniquement le plus court. On arrivera forcément à la case d'arrivée, sauf si le chemin n'est pas calculable.
+
+
+\subsubsection{Affichage de la grille (IHM)}
+
+	\paragraph{} Au niveau de l'Interface graphique, la grille est affichée dans un JPanel dans lequel nous avons modifié la méthode PaintComponent. \\
+	De nombreuses méthodes ont été crées pour afficher différents éléments à un point p.
+	\paragraph{} Nous pouvons ainsi dessiner les images importées dans le projet : \\ 
+un sol, un obstacle (en fonction de son type), une souris (en fonction de son type et de sa direction)
+	\paragraph{} Ainsi que différentes formes :\\
+Des carrés/cercles/croix, un chemin,  un champs de vision, etc.
+
+\paragraph{} L'affichage se fait donc en appelant ces différentes méthodes sur chaque case, en fonction de ce que l'on doit afficher.
+
+\paragraph{} Plusieurs modes d'affichage ont été créer, appelant d'autres fonctions pour afficher le même contenu d'une manière différente :
+\begin{itemize}
+	\item[*] Mode Global\\*
+	Affiche la grille avec les images de base
+	\item[*] Mode Schématique\\*
+Affiche la grille avec uniquement des formes géométriques de différentes couleurs et tailles (Utile pour visualiser la forme de la grille, et la position des objets)
+	\item[*] Mode Vision\\*
+Affiche la grille du point de vue de la souris. Les couleurs sont différentes, et on ne voit uniquement la mémoire de la souris. (Les choses dont elle se souvient, pas obligatoirement la réalité)
+\end{itemize}
+
+\subsubsection{Autres Fonctionnalités}
+	\begin{itemize}
+		\item[*] Un système de journal est disponible dans l'onglet "Log" de la simulation. Il permet d'avoir un regard précis sur ce qui se passe dans la simulation. 
+		\item[*] Les statistiques de la simulation sont stockées dans la classe "Statistics" et sont affichées dans l'onglet "Infos" de la simulation.
+		\item[*] L'onglet "Sim" permet à l'utilisateur de paramétrer le taux de régénération des sources de nourriture et la fréquence de reproduction/duplication. Un case à cocher permet aussi de passer la grille en mode schématique.
+		\item[*] Il est possible de générer la grille autant de fois que l'utilisateur le souhaite par le biais de l'onglet "Génération". 
+		Il est ainsi possible de modifier les différents paramètres de la grille.
+	\end{itemize}
+
+%%% Une autre façon pour écrire un algorithme %%%
+%\begin{algorithm}[H]
+ %\KwData{this text}
+ %\KwResult{how to write algorithm with \LaTeX2e }
+ %initialization\;
+ %\While{not at end of this document}{
+  %read current\;
+  %\eIf{understand}{
+   %go to next section\;
+   %current section becomes this one\;
+   %}{
+   %go back to the beginning of current section\;
+  %}
+ %}
+ %\caption{How to write algorithms}
+%\end{algorithm}

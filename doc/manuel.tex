@@ -1,0 +1,109 @@
+\section{Manuel Utilisateur}
+\label{sec:manuel}
+
+ \fig{images/IHM/ihm_globale.png}{12cm}{12cm}{IHM Globale}{simihm}
+
+La figure \ref{fig:simihm} donne un aperçu des différentes parties de notre IHM.
+Celle-ci est donc décomposée en 3 parties.
+
+	\subsection{La Grille}
+		\paragraph{} La grille nous permet d'avoir un aperçu général de la simulation. Les cases peuvent être sélectionnées et modifiées, certains paramètres peuvent être réglés, et plusieurs modes d'affichages sont possibles.
+
+	
+		\includegraphics{images/IHM/MaleMouseSprite.png} 
+			Représente les souris de sexe masculin
+
+		\includegraphics{images/IHM/FemaleMouseSprite.png} 
+			Représente les souris de sexe feminin 
+			
+		\includegraphics{images/IHM/Parquet.png} 
+			Représente une case praticable
+			
+		\includegraphics{images/IHM/box.png} 
+		\includegraphics{images/IHM/table.png} 
+		\includegraphics{images/IHM/barrel.png}
+		\includegraphics{images/IHM/wood.png}
+			Représentent un obstacle
+		
+		\includegraphics{images/IHM/food.png} 
+			Représente une source de nourriture
+
+	\subsection{Le Panneau de Contrôle}
+	
+	\paragraph{} Le panneau de contrôle permet de gérer le déroulement de la simulation mais aussi la mise en forme de la grille.
+
+		\fig{images/IHM/controlPanel.png}{12cm}{1.5cm}{Le Control Panel}{controlpanelihm}
+
+	Le panneau de contrôle de la figure \ref{fig:controlpanelihm} est décomposé en 5 parties : 
+	\begin{enumerate}
+		\item permet de lancer ou de mettre en pause la simulation.
+		\item permet d'exécuter un tour.
+		\item permet d'agrandir ou de réduire la taille de la grille.
+		\item permet de modifier la vitesse d'exécution d'un tour de x0.25 à x4 la vitesse de base (500 ms).
+		\item permet de détacher la grille de la fenêtre principale, et de la ratacher.
+	\end{enumerate}
+	
+	
+	\subsection{Les Onglets/Les Fonctionnalités}
+
+	La fenêtre principale comporte cinq onglets : "Log", "Sim", "Infos", "Generation" et "Stats".
+	
+	\subsubsection{Le log}
+		\fig{images/IHM/log.png}{12cm}{4.8cm}{L'onglet Log}{logihm}
+		\paragraph{} C'est dans le log (voir figure \ref{fig:logihm}) que sont affichées les lignes du système de journal de notre simulation . Il est possible de filtrer ces informations selon leur type (communication, reproduction, alimentation, mouvement et vie) . Il est également possible de limiter le nombre de lignes affichées. Un bouton est disponible pour vider le journal et un autre pour cocher simultanément toutes les cases du filtre.
+			
+	\subsubsection{Gestion de la simulation}
+		\fig{images/IHM/sim.png}{12cm}{4.8cm}{L'onglet Sim}{simihm}
+	\paragraph{} L'onglet de gestion de la simulation (voir figure \ref{fig:simihm}) permet de modifier plusieurs paramètres utilisés durant le déroulement de la simulation :
+	\begin{itemize}
+		\item[*] La vitesse de régénération du fromage
+		\item[*] La fréquence des accouplements
+		\item[*] La fréquence des duplications. 
+	\end{itemize}
+	\paragraph{} On peut aussi passer de la vue globale à la vue schématique à l'aide de la case "Outline Vision".
+
+	\subsubsection{L'onglet d'information}
+		\paragraph{} C'est dans cet onglet que l'on va accéder aux informations précises des cases, et que l'on va pouvoir modifier les données.
+		Il est possible, en cliquant sur la grille, de séléctionner une case. C'est dans cet onglet que sera affiché les informations (voir figure \ref{fig:infossquareihm} )
+		
+			\fig{images/IHM/infos.png}{12cm}{4.8cm}{Le Panneau d'information affichant une case}{infossquareihm}
+			
+		\paragraph{} Si la case est praticable il est possible de rajouter des unités de nourriture ou de transformer cette case en obstacle. Dans "Mice List" est répertoriée le nom, le sexe et les points de vie des souris occupant la case. Un double-clic sur une souris de la liste permet d'afficher ses caractéristiques (voir \ref{fig:infosmouseihm})
+		
+		\fig{images/IHM/example.png}{12cm}{6cm}{Le Panneau d'information affichant une case}{infosmouseihm}
+		
+		\paragraph{} Cette partie affiche également l'apparence de la souris. Cette fonctionnalité n'est que visuel, et permet simplement de représenter le degré de fiabilité et de confiance d'une souris.
+	
+		\paragraph{} Le degré de confiance est représenté à travers les yeux
+		
+	\fig{images/IHM/yeux.png}{12cm}{1.2cm}{Les différents yeux}{mouseeyesihm}
+	
+		\paragraph{} Sur la figure \ref{fig:mouseeyesihm}, on peut voir les yeux pour les différents niveaux de confiance de la souris allant de 0 à 5 (de très méfiant à très crédule).
+		
+		\fig{images/IHM/bouches.png}{12cm}{1.2cm}{Les différentes bouches}{mousemouthsihm}
+	
+		\paragraph{} Sur la figure \ref{fig:mousemouthsihm}, on peut voir les bouches pour les différents niveaux de fiabilité de la souris allant de 0 à 5 (de menteuse à très fiable).
+		
+		\paragraph{} Quelques accessoires et modifications visuelles ont été ajoutées pour différencier certaines particularités. (un noeud papillon pour les souris de sexe féminin, un chapeau pour la souris Sherlock, etc..)
+		
+		
+		\paragraph{} Cette partie permet aussi d'afficher la vision de la souris (sa mémoire, la position des fromages et les obstacles dont elle se souvient)(voir figure \ref{fig:mousevisionihm}), en cochant la case "Display Vision".
+		
+		\fig{images/IHM/memorygrid.png}{10cm}{10cm}{La vision d'une souris}{mousevisionihm}
+		
+		\paragraph{} Le tracé rouge et la cible indiquent alors la trajectoire que va suivre la souris.
+		
+	\subsubsection{L'onglet de génération}
+		\paragraph{} Cet onglet (voir \ref{fig:generationihm}) permet de regénérer une grille en fonction de plusieurs paramètres (taille, densité d'obstacles/nourriture, souris spéciales, etc..)
+		
+		\fig{images/IHM/generation.png}{12cm}{4.8cm}{Le panneau de génération}{generationihm}
+		
+	\subsubsection{Les statistiques}
+	
+		\paragraph{} Cet onglet voir (\ref{fig:statsihm}) permet d'afficher des statistiques sur la simulation en cours.
+
+		\paragraph{} De base sont affichées le nombre de souris vivantes, le nombre de souris mortes, le nombre de souris mâles et femelles présentes, le nombre de source de nourriture, la quantité totale de nourriture restantes sur la grille, le nombre de souris stériles et le nombre de souris enceintes.
+
+	\fig{images/IHM/statistiques.png}{12cm}{4.8cm}{Les statistiques}{statsihm}
+	
+	\paragraph{} Le bouton "More stats" permet d'afficher plus de statistiques dans une nouvelle fenêtre. On aura donc à des informations plus détaillées.

@@ -1,0 +1,79 @@
+\select@language {french}
+\contentsline {paragraph}{}{2}
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {paragraph}{Contexte}{3}
+\contentsline {paragraph}{Objet}{3}
+\contentsline {paragraph}{Ressources}{3}
+\contentsline {paragraph}{Outils de d\'eveloppement}{3}
+\contentsline {paragraph}{Structure du document}{3}
+\contentsline {section}{\numberline {2}Sp\'ecification}{4}
+\contentsline {paragraph}{}{4}
+\contentsline {subsection}{\numberline {2.1}Fonctionnalit\'es}{4}
+\contentsline {subsubsection}{\numberline {2.1.1}L'environnement}{4}
+\contentsline {paragraph}{}{4}
+\contentsline {subsubsection}{\numberline {2.1.2}Les souris}{4}
+\contentsline {paragraph}{}{4}
+\contentsline {paragraph}{}{4}
+\contentsline {section}{\numberline {3}R\'ealisation}{5}
+\contentsline {subsection}{\numberline {3.1}Realisation Globale}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {subsection}{\numberline {3.2}Conception D\'etaill\'ee}{5}
+\contentsline {subsubsection}{\numberline {3.2.1}Les souris}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {subsubsection}{\numberline {3.2.2}La simulation}{6}
+\contentsline {subsubsection}{\numberline {3.2.3}La grille et sa g\'en\'eration}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {subsubsection}{\numberline {3.2.4}Calcul du chemin le plus court}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {subsubsection}{\numberline {3.2.5}Affichage de la grille (IHM)}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {subsubsection}{\numberline {3.2.6}Autres Fonctionnalit\'es}{8}
+\contentsline {section}{\numberline {4}Manuel Utilisateur}{9}
+\contentsline {subsection}{\numberline {4.1}La Grille}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {subsection}{\numberline {4.2}Le Panneau de Contr\^ole}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {subsection}{\numberline {4.3}Les Onglets/Les Fonctionnalit\'es}{10}
+\contentsline {subsubsection}{\numberline {4.3.1}Le log}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {subsubsection}{\numberline {4.3.2}Gestion de la simulation}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {subsubsection}{\numberline {4.3.3}L'onglet d'information}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {paragraph}{}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {subsubsection}{\numberline {4.3.4}L'onglet de g\'en\'eration}{13}
+\contentsline {paragraph}{}{13}
+\contentsline {subsubsection}{\numberline {4.3.5}Les statistiques}{13}
+\contentsline {paragraph}{}{13}
+\contentsline {paragraph}{}{13}
+\contentsline {paragraph}{}{13}
+\contentsline {section}{\numberline {5}D\'eroulement du projet}{13}
+\contentsline {subsection}{\numberline {5.1}R\'epartition des t\^aches}{13}
+\contentsline {subsubsection}{\numberline {5.1.1}Zinedine}{13}
+\contentsline {subsubsection}{\numberline {5.1.2}Matthieu}{14}
+\contentsline {subsubsection}{\numberline {5.1.3}Rova}{14}
+\contentsline {subsection}{\numberline {5.2}Synchronisation du travail (SVN)}{14}
+\contentsline {paragraph}{}{14}
+\contentsline {subsection}{\numberline {5.3}Calendrier}{14}
+\contentsline {paragraph}{}{14}
+\contentsline {section}{\numberline {6}Bilan}{14}
+\contentsline {subsection}{\numberline {6.1}R\'eponse au sujet}{14}
+\contentsline {paragraph}{}{14}
+\contentsline {subsection}{\numberline {6.2}Apports du projet}{14}
+\contentsline {paragraph}{}{14}
